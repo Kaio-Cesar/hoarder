@@ -14,12 +14,12 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - package: hoarder-web-oauth-timeout-fix
-            target: web
-          - package: hoarder-workers-oauth-timeout-fix
-            target: workers
-          - package: hoarder-cli-oauth-timeout-fix
-            target: cli
+        #  - package: hoarder-web-oauth-timeout-fix
+        #    target: web
+        #  - package: hoarder-workers-oauth-timeout-fix
+        #    target: workers
+        #  - package: hoarder-cli-oauth-timeout-fix
+        #    target: cli
           - package: hoarder-oauth-timeout-fix
             target: aio
     runs-on: ubuntu-latest
