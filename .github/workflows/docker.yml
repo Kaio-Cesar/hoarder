@@ -13,13 +13,13 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - package: hoarder-web
+          - package: hoarder-web-oauth-timeout-fix
             target: web
-          - package: hoarder-workers
+          - package: hoarder-workers-oauth-timeout-fix
             target: workers
-          - package: hoarder-cli
+          - package: hoarder-cli-oauth-timeout-fix
             target: cli
-          - package: hoarder
+          - package: hoarder-oauth-timeout-fix
             target: aio
     runs-on: ubuntu-latest
     permissions:
@@ -47,9 +47,9 @@ jobs:
           target: ${{ matrix.target }}
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/hoarder-app/${{ matrix.package }}:latest,ghcr.io/mohamedbassem/${{ matrix.package }}:latest
-          cache-from: type=registry,ref=ghcr.io/hoarder-app/hoarder-build-cache:${{ matrix.target }}
-          cache-to: type=registry,mode=max,ref=ghcr.io/hoarder-app/hoarder-build-cache:${{ matrix.target }}
+          tags: ghcr.io/Kaio-Cesar/${{ matrix.package }}:latest,ghcr.io/Kaio-Cesar/${{ matrix.package }}:latest
+          cache-from: type=registry,ref=ghcr.io/Kaio-Cesar/hoarder-build-cache:${{ matrix.target }}
+          cache-to: type=registry,mode=max,ref=ghcr.io/Kaio-Cesar/hoarder-build-cache:${{ matrix.target }}
 
       - name: Build ${{ matrix.package }} (release)
         uses: docker/build-push-action@v5
@@ -61,6 +61,6 @@ jobs:
           target: ${{ matrix.target }}
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/hoarder-app/${{ matrix.package }}:${{ github.event.release.name }},ghcr.io/hoarder-app/${{ matrix.package }}:release,ghcr.io/mohamedbassem/${{ matrix.package }}:${{ github.event.release.name }},ghcr.io/mohamedbassem/${{ matrix.package }}:release
-          cache-from: type=registry,ref=ghcr.io/hoarder-app/hoarder-build-cache:${{ matrix.target }}
-          cache-to: type=registry,mode=max,ref=ghcr.io/hoarder-app/hoarder-build-cache:${{ matrix.target }}
+          tags: ghcr.io/Kaio-Cesar/${{ matrix.package }}:${{ github.event.release.name }},ghcr.io/Kaio-Cesar/${{ matrix.package }}:release,ghcr.io/Kaio-Cesar/${{ matrix.package }}:${{ github.event.release.name }},ghcr.io/Kaio-Cesar/${{ matrix.package }}:release
+          cache-from: type=registry,ref=ghcr.io/Kaio-Cesar/hoarder-build-cache:${{ matrix.target }}
+          cache-to: type=registry,mode=max,ref=ghcr.io/Kaio-Cesar/hoarder-build-cache:${{ matrix.target }}
